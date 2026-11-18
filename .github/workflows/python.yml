@@ -1,0 +1,22 @@
+
+name: Python Container Action
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  python-container:
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.12
+
+    steps:
+      - name: Verificar version de Python
+        run: python --version
+
+      - name: Obtener codigo del repositorio
+        uses: actions/checkout@v4
+
+      - name: Ejecutar Python
+        run: python app.py
